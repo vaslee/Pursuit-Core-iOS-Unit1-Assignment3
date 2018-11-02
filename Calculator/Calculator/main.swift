@@ -49,7 +49,28 @@ func myMap(inputArray3: [Double], mapClosure: (Double) -> Double) -> [Double]{
 }
 
 
-let calculatorGame = true
+
+func playAgain() {
+    print("Wants continue? Enter yes or no 🤩")
+    let playerInput = readLine() ?? "not valid"
+    var userAnswer = playerInput
+        switch userAnswer.lowercased() {
+        case "yes":
+            print("Let's keep Going!😘 Please enter the levels of calculator, 1 (e.g 2 + 1), 2 (e.g 2 ? 1), or 3 (high oder)😜")
+        case "no" :
+            print("Thank you for using our product! Bye-bye👋🏼")
+            calculatorGame = false
+        default:
+            print("Emmm... Out of servise, please restart again!🙄")
+            sleep(1)
+            playAgain()
+        }
+    }
+
+
+
+
+var calculatorGame = true
 loop1: while calculatorGame == true {
     print("Welcome to Calculator World! Please enter the levels of calculator, 1 (e.g 2 + 1), 2 (e.g 2 ? 1), or 3 (high oder)😜")
     
@@ -114,6 +135,7 @@ loop1: while calculatorGame == true {
                         print(myFilter(inputArray1: numOfUserInput, closure:{ $0 < nameOfBy ? true : false}))
                     }
                 }
+                playAgain()
             case "map":
                 if opSign == "*" {
                     print(myMap(inputArray3: numOfUserInput){nameOfBy * $0})
